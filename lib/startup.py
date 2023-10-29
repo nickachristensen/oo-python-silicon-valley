@@ -39,3 +39,19 @@ class Startup:
     @classmethod
     def domains(cls):
         return [startup.domain for startup in cls._all]
+
+    def sign_contract(self, venture_capitalist, type_of_investment, amount_invested):
+        FundingRound(self, venture_capitalist, type_of_investment, amount_invested)
+
+    def num_funding_rounds(self):
+        return len(self._funding_rounds)
+
+    def total_funds(self):
+        return sum(round_.investment for round_ in self._funding_rounds)
+
+    def investors(self):
+        return list(set(round_.venture_capitalist for round_ in self._funding_rounds))
+
+    def big_investors(self):
+        tres_commas_investors = VentureCapitalist.tres_commas_club()
+        return [investor for investor in self.investors() if investor in tres_commas_investors]

@@ -5,7 +5,7 @@ class FundingRound:
         self._startup = startup
         self._venture_capitalist = venture_capitalist
         self._type = type_of_funding
-        self._investment = max(investment, 0.0)  # Ensure the investment is not negative
+        self._investment = max(investment, 0.0)
         self.__class__._all.append(self)
 
         startup._funding_rounds.append(self)
